@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     <title>Create Project</title>
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
+        <div class="project-form">
             <h1>Create a new project</h1>
             <form method="post">
                 {% csrf_token %}

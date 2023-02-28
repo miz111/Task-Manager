@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     <title>My Projects</title>
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
-            <h1>My Projects</h1>
+        <div class="project-list">
+            <div class="make-inline">
+                <h1 class="make-inline">My Projects     </h1>
+                <a class="no-underline" href="{% url 'create_project' %}">Add New</a>
+            </div>
             <p>
-                <a href="{% url 'create_project' %}">Create a new project</a>
-            </p>
             {% if projects.count == 0 %}<p>You are not assigned to any projects.</p>{% endif %}
             <table>
                 <thead>
@@ -22,13 +25,23 @@
                     {% for project in projects %}
                         <tr>
                             <td>
-                                <a href="{% url 'show_project' project.pk %}">{{ project.name }}</a>
+                                <a class="no-underline" href="{% url 'show_project' project.pk %}">{{ project.name }}</a>
                             </td>
                             <td>{{ project.tasks.all|length }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
+        </p>
+        </div>
+        <div class="flowers">
+            <img src="http://clipart-library.com/img/742894.png" alt="flower" width="15%">
+            <img src="http://clipart-library.com/img/1133425.png" alt="flower2" width="15%">
+            <img src="http://clipart-library.com/img/1133633.png" alt="flower2" width="15%">
+            <img src="http://clipart-library.com/img/1133783.png" alt="flower2" width="10%">
+            <img src="http://clipart-library.com/img/742894.png" alt="flower" width="10%">
+            <img src="http://clipart-library.com/img1/1133673.png" alt="flower2" width="10%">
+            <img src="http://clipart-library.com/img/1133425.png" alt="flower2" width="20%">
         </div>
     </main>
 {% endblock content %}

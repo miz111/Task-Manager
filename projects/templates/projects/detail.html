@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     <title>Project Details</title>
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
-            <h1>{{ project_object.name }}</h1>
+        <div class="project-detail">
+            <div class="make-inline">
+                <h1 class="make-inline">{{ project_object.name }}    </h1>
+                <a href="{% url 'edit_project' project_object.pk %}">Edit</a>
+            </div>
             <p>{{ project_object.description }}</p>
             <h2>Tasks</h2>
             <p>
-                <a href="{% url 'create_task' %}">Create a new task</a>
                 {% if project_object.tasks.count > 0 %}
                     <table>
                         <thead>
@@ -27,8 +31,8 @@
                                 <tr>
                                     <td>{{ task.name }}</td>
                                     <td>{{ task.assignee }}</td>
-                                    <td>{{ task.start_date }}</td>
-                                    <td>{{ task.due_date }}</td>
+                                    <td>{{ task.start_date|date:"M d, Y" }}</td>
+                                    <td>{{ task.due_date|date:"M d, Y" }}</td>
                                     <td>{{ task.is_complete|yesno }}</td>
                                 </tr>
                             {% endfor %}
@@ -37,6 +41,8 @@
                 {% else %}
                     <p>This project has no tasks</p>
                 {% endif %}
-            </div>
-        </main>
+                </p>
+           <p><a  href="{% url 'create_task' %}">Add Task</a></p>
+        </div>
+    </main>
     {% endblock content %}

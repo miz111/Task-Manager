@@ -3,16 +3,16 @@
 {% load static %}
 
 {% block title %}
-    <title>Login</title>
+    <title>Edit Project</title>
 {% endblock title %}
 {% block content %}
     <main>
-        <div class="login-form">
-            <h1>Login</h1>
+        <div class="project-form">
+            <h1>Edit Project</h1>
             <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button>Login</button>
+                {{ project_form.as_p }}
+                <button>Save</button>
             </form>
         </div>
     </main>

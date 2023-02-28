@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     <title>My Tasks</title>
 {% endblock title %}
 {% block content %}
     <main>
-        <div>
-            <h1>My Tasks</h1>
+        <div class="my-tasks-list">
+            <div class="make-inline">
+            <h1 class="make-inline">My Tasks     </h1>
+                <a class="no-underline" href="{% url 'create_task' %}">Add Task</a>
+            </div>
+            <p>
             {% if tasks.count > 0 %}
                 <table>
                     <thead>
@@ -21,16 +27,26 @@
                         {% for task in tasks.all %}
                             <tr>
                                 <td>{{ task.name }}</td>
-                                <td>{{ task.start_date }}</td>
-                                <td>{{ task.due_date }}</td>
+                                <td>{{ task.start_date|date:"M d, Y" }}</td>
+                                <td>{{ task.due_date|date:"M d, Y" }}</td>
                                 <td>{{ task.is_complete|yesno }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+            </p>
             {% else %}
                 <p>You have no tasks</p>
             {% endif %}
+        </div>
+        <div class="flowers">
+            <img src="http://clipart-library.com/img/742894.png" alt="flower" width="15%">
+            <img src="http://clipart-library.com/img/1133425.png" alt="flower2" width="15%">
+            <img src="http://clipart-library.com/img/1133633.png" alt="flower2" width="15%">
+            <img src="http://clipart-library.com/img/1133783.png" alt="flower2" width="10%">
+            <img src="http://clipart-library.com/img/742894.png" alt="flower" width="10%">
+            <img src="http://clipart-library.com/img1/1133673.png" alt="flower2" width="10%">
+            <img src="http://clipart-library.com/img/1133425.png" alt="flower2" width="20%">
         </div>
     </main>
 {% endblock content %}
